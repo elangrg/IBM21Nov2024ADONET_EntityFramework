@@ -32,7 +32,7 @@ namespace IBM21Nov2024ADONET_EntityFramework
 
                 if (choice == 1)
                 {
-                    ListProductsUsingConComRdr(_dbctx);
+                    ListProducts(_dbctx);
 
                 }
 
@@ -62,39 +62,50 @@ namespace IBM21Nov2024ADONET_EntityFramework
 
                 }
 
-
-
-
             }
             while (choice != 0);
-
-
-
 
 
         }
 
         private static void StoredProcEg(IBM08Nov2024DbEntities _db)
         {
+            Console.Clear();
             Console.Write("Enter Product ID :");
                 int prdId = int.Parse(Console.ReadLine());
 
             ObjectParameter prm = new ObjectParameter("prdname", "");
-
             _db.GetProductNameByID(prdId, prm);
-
             if (prm.Value!=null)
             {
-
                 Console.WriteLine($"Product Name: {prm.Value}");
             }
 
             Console.WriteLine("Press Any key to continue...");
             Console.ReadKey();
 
+            Console.WriteLine("Product ID".PadLeft(12, ' ') + "  Product Name".PadRight(32, ' ') + "Quantity".PadLeft(12, ' ') + "Rate".PadLeft(12, ' '));
+
+
+            Console.WriteLine("  ".PadRight(12, '_') + "  ".PadRight(32, '_') + "  ".PadRight(12, '_') + "  ".PadRight(12, '_'));
+
+            foreach (var item in _db.FetchProducts())
+            {
+                Console.WriteLine(
+                        $"{item.ProductID.ToString().PadLeft(12, ' ')}  {item.ProductName.PadRight(30, ' ')}{item.Qty.ToString().PadLeft(12, ' ')}{item.Rate.ToString().PadLeft(12, ' ')}");
+            }
+
+
+            Console.WriteLine("Press Any key to continue...");
+            Console.ReadKey();
+
+
+
+
+
         }
 
-        private static void ListProductsUsingConComRdr(IBM08Nov2024DbEntities db)
+        private static void ListProducts(IBM08Nov2024DbEntities db)
         {
 
 

@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\FetchProducts_Result.cs">
+      <DependentUpon>Products.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetProducts_Result.cs">
       <DependentUpon>Products.tt</DependentUpon>
     </Compile>

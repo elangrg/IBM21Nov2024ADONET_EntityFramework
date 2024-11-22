@@ -42,5 +42,10 @@ namespace IBM21Nov2024ADONET_EntityFramework.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProducts_Result>("GetProducts");
         }
+    
+        public virtual ObjectResult<FetchProducts_Result> FetchProducts()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FetchProducts_Result>("FetchProducts");
+        }
     }
 }
